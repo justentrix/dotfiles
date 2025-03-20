@@ -1,0 +1,124 @@
+# sway
+super + shift + q
+  swaymsg kill
+
+super + shift + r
+  swaymsg reload && killall sxhkd && sxhkd -c ~/.config/sway/sxhkdrc
+
+super + {_,shift +} {h,j,k,l}
+  swaymsg {focus,move} {left,down,up,right}
+
+super + f
+  swaymsg fullscreen toggle
+
+super + shift + space
+  swaymsg floating toggle
+
+super + shift + s
+  swaymsg sticky toggle
+
+# workspaces
+super + {1-9,0}
+  swaymsg workspace {1-9, 10}
+
+alt + {1-9}
+  swaymsg workspace {11,12,13,14,15,16,17,18,19}
+
+super + ctrl + {1-9,0}
+  swaymsg move container to workspace {1-9,10}
+
+alt + ctrl + {1-9,0}
+  ws=$(("{1-9,10}" + 10)) && \
+  swaymsg "move container to workspace $ws"
+
+super + shift + {1-9,0}
+  ws="{1-9,10}" && \
+  swaymsg "move container to workspace $ws" && \
+  swaymsg "workspace $ws"
+
+alt + shift + {1-9, 0}
+  ws=$(("{1-9,10}" + 10)) && \
+  swaymsg "move container to workspace $ws" && \
+  swaymsg "workspace $ws"
+
+# scratchpad
+super + shift + minus
+  swaymsg move scratchpad
+
+super + minus
+  i3-msg scratchpad show
+
+# rofi
+super + space
+  rofi -show drun
+
+super + d
+  rofi -show drun
+
+super + period
+  rofi -modi emoji -show emoji -emoji-mode copy
+
+super + Tab
+  rofi -show window
+
+alt + F4
+  rofi -show power-menu -modi power-menu:rofi-power-menu
+
+# applications
+super + Return
+  alacritty
+
+super + e
+  xdg-open ~
+
+super + g
+  $BROWSER
+
+super + ctrl + g
+  $BROWSER -incognito
+
+ctrl + shift + Escape
+  alacritty -e htop
+
+# screenshots
+Print
+  flameshot gui
+
+super + Print
+  flameshot screen -p ~/Pictures/Screenshots/
+
+ctrl + Print
+  flameshot full -p ~/Pictures/Screenshots/
+
+super + shift + ctrl + l
+  i3exit lock
+
+super + ctrl + {h,j,k,l}
+  i3-msg resize {shrink width,grow height,shrink height,grow width} 5 px or 5 ppt
+
+# media keys
+XF86Audio{Raise,Lower}Volume
+  amixer -q set Master 5%{+,-}
+
+XF86AudioMute
+  amixer -q set Master toggle
+ 
+super + XF86AudioMute
+  amixer -q set Capture toggle
+
+#XF86AudioMute
+
+XF86Audio{Prev,Play,Pause,Next}
+  playerctl {previous, play-pause, pause, next}
+
+XF86MonBrightness{Up,Down}
+  brightnessctl s 5%{+,-}
+
+XF86Calculator
+  rofi -show calc
+
+# alternate keybinds for my notebook
+super + F{10,11,12}
+  playerctl {previous,play-pause,next}
+
+
