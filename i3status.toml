@@ -64,7 +64,6 @@ button = "left"
 cmd = "LC_TIME=en_GB.utf8 gsimplecal"
 [block.theme_overrides]
 idle_fg = "#89CFF0"
-
 [block.icons_overrides]
 time = "\uf073"
 
