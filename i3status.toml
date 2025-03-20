@@ -52,9 +52,9 @@ warning = 20.0
 alert = 10.0
 format = " $icon $available "
 
-[[block]]
-block = "battery"
-interval = 2
+#[[block]]
+#block = "battery"
+#interval = 2
 
 [[block]]
 block = "time"
