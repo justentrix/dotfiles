@@ -91,7 +91,7 @@ bar {
 
 #   colors              border      backgr.    text
     focused_workspace   #505050aa   #505050aa  #ffffff
-    active_workspace    #2f343f     #505050aa  #707880
+    active_workspace    #505050aa   #505050aa  #707880
     inactive_workspace  #000000aa   #000000aa  #707880
     urgent_workspace    #ffff00     #ffff00    #000000
   }
