@@ -1,0 +1,59 @@
+set scrolloff=11
+set clipboard=unnamedplus
+
+set smartcase
+set ignorecase
+set incsearch
+
+set number
+set relativenumber
+
+set smarttab
+set shiftwidth=3
+
+" i like this cursor more
+set guicursor=i:block
+
+" idea plugins
+if has("ide")
+  set surround
+  set ideajoin
+else
+  try
+    call plug#begin()
+      Plug 'tpope/vim-surround'
+      Plug 'scrooloose/nerdtree'
+    call plug#end()
+  catch
+  endtry
+endif
+
+" switch between splits
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+
+" resizing splits
+nmap <up> :resize +5<cr>
+nmap <down> :resize -5<cr>
+nmap <left> :vertical resize +5<cr>
+nmap <right> :vertical resize -5<cr>
+
+" tab navigation
+nmap <C-tab> gt
+nmap <C-s-tab> gT
+
+" move lines
+nmap <M-j> :m+<cr>==
+nmap <M-k> :m-1<cr>==
+vmap <M-j> :m'>+<cr>gv=gv
+vmap <M-k> :m-1<cr>gv=gv
+
+" useful mappings
+map Y y$
+vmap < <gv
+vmap > >gv
+"nmap <C-S-a> ggVG " maybe another shortcut?
+
+map <C-n> :NERDTreeToggle<cr>
