@@ -12,6 +12,6 @@ My development environment consists of the following components:
 ## Setup
 Simply copy all the files into your `/home/xyz` directory. Finished.
 
-## todo
+## Todo
 * i will add my sway configuration files very soon. i promise.
 
