@@ -1,0 +1,78 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "native"
+
+[theme.overrides]
+warning_fg = "#707880"
+
+[icons]
+icons = "awesome4"
+
+[icons.overrides]
+volume_muted = "\uf466"
+volume = ["\U000f057f", "\U000f0580", "\U000f057e"]
+
+[[block]]
+block = "sound"
+format = " $icon {$volume|muted} "
+max_vol = 150
+[[block.click]]
+button = "left"
+action = "toggle_mute"
+[[block.click]]
+button = "right"
+cmd = "pavucontrol"
+[[block.click]]
+button = "middle"
+cmd = "rofi-mixer"
+[block.theme_overrides]
+idle_fg = "#C9C0FF"
+
+[[block]]
+block = "sound"
+driver = "pulseaudio"
+device_kind = "source"
+headphones_indicator = true
+format = " $icon {$volume|muted} "
+[[block.click]]
+button = "left"
+action = "toggle_mute"
+[[block.click]]
+button = "right"
+[block.theme_overrides]
+idle_fg = "#FCFFC0"
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+alert_unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+format = " $icon $available "
+[block.theme_overrides]
+idle_fg = "#FFC0CB"
+
+[[block]]
+block = "time"
+interval = 5
+format = " $icon $timestamp.datetime(f:'%a, %Y-%m-%d') "
+[[block.click]]
+button = "left"
+cmd = "LC_TIME=en_GB.utf8 gsimplecal"
+[block.theme_overrides]
+idle_fg = "#89CFF0"
+[block.icons_overrides]
+time = "\uf073"
+
+[[block]]
+block = "time"
+interval = 0.1
+format = " $icon $timestamp.datetime(f:'%T') "
+[block.icons_overrides]
+time = "\uf017"
+[block.theme_overrides]
+idle_fg = "#A0DB8E"
+
