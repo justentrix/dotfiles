@@ -1,0 +1,11 @@
+[user]
+    name =
+    email =
+[alias]
+    s = status
+    co = checkout
+    b = branch
+    cm = commit --message
+[credential "https://github.com"]
+    helper =
+    helper = !/usr/bin/gh auth git-credential
