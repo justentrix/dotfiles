@@ -1,59 +1,80 @@
-set scrolloff=11
-set clipboard=unnamedplus
+" plugins
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-surround'
 
-set smartcase
-set ignorecase
-set incsearch
+set NERDTree
 
-set number
 set relativenumber
+set number
+set scrolloff=5
 
 set smarttab
-set shiftwidth=3
+set shiftwidth=2
+
+" search
+set incsearch
+set ignorecase
+set smartcase
 
 " i like this cursor more
 set guicursor=i:block
 
-" idea plugins
-if has("ide")
-  set surround
-  set ideajoin
-else
-  try
-    call plug#begin()
-      Plug 'tpope/vim-surround'
-      Plug 'scrooloose/nerdtree'
-    call plug#end()
-  catch
-  endtry
-endif
+let mapleader = ' '
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
 
-" switch between splits
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-h> <C-w>h
-map <C-l> <C-w>l
+" system register
+map <leader>y "+y
+map <leader>p "+p
+map <leader>c "+c
+map <leader>d "_d
+map <leader>D "_D
 
-" resizing splits
-nmap <up> :resize +5<cr>
-nmap <down> :resize -5<cr>
-nmap <left> :vertical resize +5<cr>
-nmap <right> :vertical resize -5<cr>
-
-" tab navigation
+" tabs
 nmap <C-tab> gt
-nmap <C-s-tab> gT
+nmap <C-S-tab> gT
+
+" switching between splits
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
 
 " move lines
-nmap <M-j> :m+<cr>==
-nmap <M-k> :m-1<cr>==
-vmap <M-j> :m'>+<cr>gv=gv
-vmap <M-k> :m-1<cr>gv=gv
+vmap <M-j> :m '>+1<cr>gv=gv
+vmap <M-k> :m '<-2<cr>gv=gv
+nmap <M-j> :m .+1<cr>
+nmap <M-k> :m .-2<cr>
+imap <M-j> <Esc>:m .+1<cr>i
+imap <M-k> <Esc>:m .-2<cr>i
 
 " useful mappings
-map Y y$
-vmap < <gv
-vmap > >gv
-"nmap <C-S-a> ggVG " maybe another shortcut?
+map <C-7> gcc
+nmap <C-s> :w<cr>
+nmap Y y$
+nmap <leader>a ggVG
 
-map <C-n> :NERDTreeToggle<cr>
+" don't exit visual mode when indenting
+vmap < <gv^
+vmap > >gv^
+
+" resizing
+nmap <up> :resize +2<cr>
+nmap <down> :resize -2<cr>
+nmap <left> :vertical resize +2<cr>
+nmap <right> :vertical resize -2<cr>
+
+" idea stuff
+if has("ide")
+  set ideajoin
+  set idearefactormode=keep
+  " hier noch Sachen aus meiner alten ideavimrc vom pc reinkopieren
+
+  " actions
+  map <leader>tt <Action>(Run)
+  map <leader>n :NERDTreeToggle<cr>
+  map == <Action>(ReformatCode)
+endif
+
